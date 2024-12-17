@@ -29,13 +29,17 @@ export function Addtocart(productId){
             matchingItem = cartItem;
         }
     });
-  
+    
+    const quantitySelector = document.querySelector(
+        `.js-quantity-selector-${productId}`
+      );
+      const quantity_value = Number(quantitySelector.value);
     if(matchingItem){
-        matchingItem.quantity+=1;
+        matchingItem.quantity+=quantity_value;
     }else{
         cart.push({
             productId: productId,
-            quantity: 1,
+            quantity: quantity_value,
             deliveryOptionId: '1'
         });
     }
