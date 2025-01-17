@@ -15,12 +15,17 @@ import { cart } from '../data/cart.js';
 // document.querySelector('.js-update-cart-quantity-top')
 //     .innerHTML = `${cartQuantity} items`
 
-function updateCartQuantity(class_name){     
+export function updateCartQuantity(class_name){     
     let cartQuantity = 0;
     cart.forEach((cartItem) => {
         cartQuantity += cartItem.quantity;
     }); 
-    document.querySelector(class_name).innerHTML = cartQuantity;
+    if(cartQuantity===1){
+        document.querySelector(class_name).innerHTML = cartQuantity + ' item';
+    }else{
+        document.querySelector(class_name).innerHTML = cartQuantity + ' items';
+    }
+    
 }
 updateCartQuantity('.js-update-cart-quantity-top');
 
